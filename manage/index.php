@@ -1,4 +1,7 @@
-<?php include "header.php"; ?>
+<?php include "header.php"; 
+include "/../db.php"; 
+
+?>
  
       <div class="am-content">
         <div class="page-head">
@@ -22,25 +25,25 @@
                     <div class="form-group">
                       <label class="col-sm-3 control-label">Name</label>
                       <div class="col-sm-6">
-                        <input type="text" placeholder="Name" class="form-control">
+                        <input type="text" placeholder="Name" name="Name" class="form-control">
                       </div>
                     </div>
                     <div class="form-group">
                       <label class="col-sm-3 control-label">Email Id</label>
                       <div class="col-sm-6">
-                        <input type="text" placeholder="Email Id (Login Username)" class="form-control">
+                        <input type="text" name="Email" placeholder="Email Id (Login Username)" class="form-control">
                       </div>
                     </div>
                     <div class="form-group">
                       <label class="col-sm-3 control-label">Password</label>
                       <div class="col-sm-6">
-                        <input type="password" placeholder="Password" class="form-control">
+                        <input type="password" name="Password" placeholder="Password" class="form-control">
                       </div>
                     </div>
                     <div class="form-group">
                       <label class="col-sm-3 control-label">Mobile No</label>
                       <div class="col-sm-6">
-                        <input type="text" placeholder="Mobile No" class="form-control">
+                        <input type="text" name="Mobile" placeholder="Mobile No" class="form-control">
                       </div>
                     </div>
                 
@@ -69,7 +72,7 @@
       $(document).ready(function(){
       	//initialize the javascript
       	App.init();
-      	
+      		});
          </script>
        
   </body>
