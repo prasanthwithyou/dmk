@@ -20,7 +20,7 @@
                   <div class="col-xs-4"><span class="title">Total Sales</span><span data-toggle="counter" data-end="500" data-prefix="$" class="number">$0</span></div>
                   <div class="col-xs-4"><span class="title">Refunds</span><span data-toggle="counter" data-end="90" class="number">0</span></div>
                 </div>
-              </div>
+              </div>	
             </div>
             <div class="col-md-4">
               <div class="widget widget-pie">
