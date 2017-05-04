@@ -2,15 +2,7 @@
 include "db.php";
 ?>
  
-      <div class="am-content">
-        <div class="page-head">
-          <h2>Add Member's</h2>
-          <ol class="breadcrumb">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">manage</a></li>
-            <li class="active">Member's</li>
-          </ol>
-        </div>
+     
         <div class="main-content">
               <!--Basic Elements-->
           <div class="row">
@@ -62,12 +54,7 @@ include "db.php";
          
         </div>
       </div>
-    <script src="../assets/lib/jquery/jquery.min.js" type="text/javascript"></script>
-    <script src="../assets/lib/jquery.nanoscroller/javascripts/jquery.nanoscroller.min.js" type="text/javascript"></script>
-    <script src="../assets/js/main.js" type="text/javascript"></script>
-    <script src="../assets/lib/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="../assets/lib/theme-switcher/theme-switcher.min.js" type="text/javascript"></script>
-    <script src="../assets/lib/prettify/prettify.js" type="text/javascript"></script>
+   
     <script type="text/javascript">
 
 
@@ -84,11 +71,7 @@ function submitForm(){
 
 }
 
-      $(document).ready(function(){
-      	//initialize the javascript
-      	App.init();
-      		});
-         </script>
+              </script>
        
   </body>
 

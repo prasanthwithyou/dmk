@@ -41,7 +41,7 @@
             // Connect to the database
 
             $connection = $this -> connect();
-
+//echo $query;
             // Query the database
             $result = $connection -> query($query);
             return $result;
