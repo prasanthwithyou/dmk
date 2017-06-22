@@ -4,13 +4,20 @@ include "db.php";
 $type=$_REQUEST['type'];
 //print_r($_REQUEST);
 $date = $db -> quote(date('Y-m-d H:i:s'));
-if($type=="userForm") {
+if($type=="addmember") {
 
 	$name = $db -> quote($_REQUEST['Name']);
 	$Email =$db -> quote($_REQUEST['Email']);
 	$Password = $db -> quote($_REQUEST['Password']);
 	$Mobile = $db -> quote($_REQUEST['Mobile']);
-	$result =  $db -> query('INSERT INTO `tbl_User` (`userName`,`password`,`Name`,`mobileNo`,`EmailId`,`usertypeId`,`createdAt`) VALUES ('.$Email . ',' .$Password . ','. $name . ',' . $Mobile . ','. $Email . ',"2",'.$date.')');
+	$district = $db -> quote($_REQUEST['district']);
+	$result =  $db -> query('INSERT INTO `tbl_User` (`userName`,`password`,`Name`,`mobileNo`,`EmailId`,`districtId`,`usertypeId`,`createdAt`) VALUES ('.$Email . ',' .$Password . ','. $name . ',' . $Mobile . ','. $Email . ','. $district . ',"2",'.$date.')');
+	echo "Success";
+}
+if($type=="district") {
+
+	$district = $db -> quote($_REQUEST['district']);
+	$result =  $db -> query('INSERT INTO `tbl_district` (`district`,`createdAt`) VALUES ('.$district . ','.$date.')');
 	echo "Success";
 }
 if($type=="LoginForm"){
@@ -27,7 +34,7 @@ if($type=="LoginForm"){
 	}
 
 }
-if($type=="contentForm") {
+if($type=="Content") {
 	$Subject = $db -> quote($_REQUEST['Subject']);
 	$Content =$db -> quote($_REQUEST['Content']);
 	$memberId =$db ->quote(implode(',',$_REQUEST['memberId']));
@@ -54,4 +61,29 @@ echo "Success";
 
 
 }
+if($type=="LoginFormMember"){
+
+	 $Username = $db -> quote($_REQUEST['username']);
+	$Password = $db -> quote($_REQUEST['Password']);
+	$loginCheck = $db -> select('SELECT * FROM `tbl_User` WHERE `userName`='.$Username.' and `password`='.$Password.'');
+//print_r($loginCheck);
+	$userType = $db -> select('SELECT * FROM `tbl_userType` WHERE `usertypeId`='.$loginCheck[0]['usertypeId'].'');
+	if($userType[0]['userType']=="Member"){
+		echo "1";
+	}
+	else{
+		echo "Invalid Login";
+	}
+
+}
+if($type=="getMembers") { 
+$districtId=$_REQUEST['districtId'];
 ?>
+ <select multiple="" class="tags" name="memberId[]" class="form-control" id="memberId">
+		<?php  $memberList = $db -> select("SELECT `userId`,`EmailId` FROM `tbl_User` WHERE `status`='active' and `usertypeId`='2' and `districtId`='".$districtId."' ");
+			for($i=0;$i<count($memberList);$i++){ ?>
+                    <option value="<?php echo $memberList[$i]['userId']?>" ><?php echo $memberList[$i]['EmailId']?></option>
+                                       	<?php } ?>
+                  </select>
+	
+<?php } ?>

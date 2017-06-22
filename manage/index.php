@@ -72,7 +72,7 @@
 				$("#result").html("<div>"+response+"</div>");
 
 			}else{
-				window.location.href = "addMember.php";
+				window.location.href = "addMember?type=addmember";
 			}
 			 $('#LoginForm')[0].reset();
 		}
