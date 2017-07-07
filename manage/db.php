@@ -44,9 +44,19 @@
 //echo $query;
             // Query the database
             $result = $connection -> query($query);
+   	    $last_id = mysqli_insert_id($connection);
+            return $last_id;
+        }
+ public function selectquery($query) {
+            // Connect to the database
+
+            $connection = $this -> connect();
+//echo $query;
+            // Query the database
+            $result = $connection -> query($query);
+
             return $result;
         }
-
         /**
          * Fetch rows from the database (SELECT query)
          *
@@ -56,7 +66,7 @@
         public function select($query) {
             $resultData = array();
 
-            $result = $this -> query($query);
+            $result = $this -> selectquery($query);
             if($result === false) {
                 return false;
             }

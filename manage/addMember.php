@@ -115,7 +115,7 @@ $type=$_REQUEST['type'];
                   <h3>Send Content to Member's</h3>
                 </div>
                 <div class="panel-body" >
-                  <form action="" style="border-radius: 0px;" id="contentForm" name="contentForm" action="" method="POST" class="form-horizontal group-border-dashed">
+                  <form action="" style="border-radius: 0px;" id="userForm" name="userForm" action="" method="POST" class="form-horizontal group-border-dashed">
 		<div class="form-group row">
                 <label class="col-sm-2 control-label">Select District</label>
                 <div class="col-sm-10">
@@ -192,6 +192,15 @@ function submitForm(){
     });
 
 }
+
+      $(document).ready(function(){
+      	//initialize the javascript
+      	App.init();
+      	App.emailCompose();
+      });
+     $(document).ready(function(){
+      	App.livePreview();
+      });
 function getMembers(districtId){
 	var type="getMembers";
 	$.get('action.php',{type:type,districtId:districtId},function(data){
