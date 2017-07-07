@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 11, 2017 at 08:22 PM
+-- Generation Time: Jul 07, 2017 at 10:05 PM
 -- Server version: 5.5.54-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.20
 
@@ -75,24 +75,46 @@ INSERT INTO `tbl_district` (`districtId`, `district`, `status`, `createdAt`) VAL
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_mapMsgcontent`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_mapMsgcontent` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `memberId` int(11) DEFAULT NULL,
+  `msgId` int(11) DEFAULT NULL,
+  `createdAt` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `tbl_mapMsgcontent`
+--
+
+INSERT INTO `tbl_mapMsgcontent` (`id`, `memberId`, `msgId`, `createdAt`) VALUES
+(1, 9, 1, '2017-07-07 00:57:42'),
+(2, 9, 2, '2017-07-07 00:58:25');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_messageContent`
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_messageContent` (
   `msgId` int(11) NOT NULL AUTO_INCREMENT,
-  `memberId` varchar(255) DEFAULT NULL,
   `messageSubject` varchar(255) DEFAULT NULL,
   `messageContent` text,
   `createdAt` datetime DEFAULT NULL,
   PRIMARY KEY (`msgId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `tbl_messageContent`
 --
 
-INSERT INTO `tbl_messageContent` (`msgId`, `memberId`, `messageSubject`, `messageContent`, `createdAt`) VALUES
-(1, '9,10,11', 'Tests', 'Test mail ', '2017-05-05 00:02:35');
+INSERT INTO `tbl_messageContent` (`msgId`, `messageSubject`, `messageContent`, `createdAt`) VALUES
+(1, 'Hi Prasanth', 'Hi PrasanthHi PrasanthHi PrasanthHi PrasanthHi PrasanthHi PrasanthHi PrasanthHi PrasanthHi Prasanth\r\nHi PrasanthHi PrasanthHi PrasanthHi PrasanthHi PrasanthHi PrasanthHi PrasanthHi PrasanthHi PrasanthHi PrasanthHi PrasanthHi PrasanthHi Prasanth\r\nHi PrasanthHi PrasanthHi Prasanth', '2017-07-07 00:57:42'),
+(2, 'Tests', 'TestsTestsTestsTestsTestsTestsTestsTestsTestsTestsTestsTestsTestsTestsTestsTestsTestsTestsTestsTestsTestsTestsTests\nTestsTestsTestsTestsTestsTestsTestsTestsTestsTestsTestsTests\nTestsTestsTestsTestsTestsTestsTestsTestsTestsTestsTestsTestsTestsTestsTests\nTestsTestsTestsTestsTestsTestsTestsTestsTestsTestsTestsTestsTestsTestsTestsTestsTestsTestsTestsTestsTestsTestsTe\nstsTestsTestsTestsTestsTestsTestsTestsTestsTestsTestsTestsTestsTests\nTestsTestsTestsTestsTestsTestsTestsTestsTestsTestsTestsTests', '2017-07-07 00:58:25');
 
 -- --------------------------------------------------------
 
@@ -139,7 +161,7 @@ CREATE TABLE IF NOT EXISTS `tbl_userType` (
   `status` varchar(255) DEFAULT 'active',
   `createdAt` datetime DEFAULT NULL,
   PRIMARY KEY (`usertypeId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `tbl_userType`
