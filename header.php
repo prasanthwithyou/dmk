@@ -1,5 +1,4 @@
-<?php session_start(); ?>
-
+<?php //session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,8 +44,11 @@
 <ul class="nav navbar-nav">
 <li class="active"><a href="index">Home</a></li>
 <?php if($_SESSION['userId']!="") {  ?> <li><a href="content">Content</a></li> <?php  } ?>
-<li><a href="#">Contact us</a></li>
-
+<li><a href="history">History</a></li>
+<li><a href="blog">Latest News</a></li>
+<li><a href="#">Meeting</a></li>
+<li><a href="contact">Contact</a></li>
+<li><a href="services">Employment</a></li>
 <li class="dropdown">
 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php if($_SESSION['userId']!="") {  echo $_SESSION['Name']; }else{  echo "Profile"; } ?> <i class="fa fa-angle-down"></i></a>
 <ul class="dropdown-menu">

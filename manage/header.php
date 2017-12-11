@@ -48,9 +48,24 @@
                   <li><a href="addMember?type=district">Add District</a></li>
                   <li><a href="MemberList?type=districtList">District List</a></li>
                   <li><a href="addMember?type=Content">Push Content</a></li>
+                  <li><a href="addMember?type=ContentMultiple">Multiple Push Content</a></li>
                 </ul>
               </li>
               <li><a href="#">Support</a></li>
+      
+            </ul>
+                        <ul class="nav navbar-nav am-nav-right">
+              <li class="dropdown"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle">Contents <span class="angle-down s7-angle-down"></span></a>
+                <ul role="menu" class="dropdown-menu">
+                  <li><a href="">Add New's</a></li>
+                  <li><a href="">Add Meeting </a></li>
+                  <li><a href="">Add Jobs</a></li>
+                  <li><a href="">Add Development</a></li>
+                  <li><a href="">Add Program</a></li>
+                  <li><a href="">Add CSV</a></li>
+                </ul>
+              </li>
+
             </ul>
             <ul class="nav navbar-nav navbar-right am-icons-nav">
               
@@ -74,11 +89,20 @@
     <script src="../assets/lib/summernote/summernote-ext-amaretti.js" type="text/javascript"></script>
     <script src="../assets/lib/select2/js/select2.min.js" type="text/javascript"></script>
   <script src="../assets/lib/datatables/js/jquery.dataTables.min.js" type="text/javascript"></script>
+  <script src="https://cdn.datatables.net/fixedheader/3.1.3/js/dataTables.fixedHeader.min.js" type="text/javascript"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.0/js/dataTables.responsive.min.js" type="text/javascript"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.0/js/responsive.bootstrap.min.js" type="text/javascript"></script>
 
     <script src="../assets/lib/datatables/js/dataTables.bootstrap.min.js" type="text/javascript">
+    
 
   $(document).ready(function(){
       	//initialize the javascript
+      	 var table = $('#example').DataTable( {
+        responsive: true
+    } );
+ 
+    new $.fn.dataTable.FixedHeader( table );
       	App.init();
       	App.emailCompose();
       	App.dataTables();

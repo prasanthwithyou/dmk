@@ -12,7 +12,7 @@
             // Try and connect to the database
             if(!isset($connection)) {
                 // Load configuration as an array. Use the actual location of your configuration file
-               $connection = new mysqli('localhost','root','console','dmkDb');
+               $connection = new mysqli('localhost','tnchatap_root','console@123','tnchatap_dmkDb');
             }
 		
            return $connection;

@@ -55,6 +55,20 @@ $type=$_REQUEST['type'];
                         </select>
                       </div>
                     </div>
+                    
+                    <div class="form-group">
+                      <label class="col-sm-3 control-label">Posting</label>
+                      <div class="col-sm-6">
+				<?php  $usertypeList = $db -> select("SELECT * FROM `tbl_userType` WHERE 1"); ?>
+			<select class="select2 col-sm-12" name="usertype" id="usertype">
+                          <option>Select usertype</option>
+			<?php for($i=0;$i<count($usertypeList);$i++){ ?>
+ 				<option value="<?php echo $usertypeList[$i]['usertypeId']; ?>"><?php echo $usertypeList[$i]['userType']; ?></option>
+			<?php } ?>
+                        
+                        </select>
+                      </div>
+                    </div>
                 
 			       <div class="form-group">
                       <label class="col-sm-3 control-label"></label>
@@ -71,6 +85,8 @@ $type=$_REQUEST['type'];
           <script>
   $(document).ready(function(){
       	     	$('#district').select2();
+      	     	      	     	$('#usertype').select2();
+
       		});
          </script>
         </div>
@@ -105,6 +121,62 @@ $type=$_REQUEST['type'];
             </div>
           </div>
          
+        </div>
+        	<?php } elseif($type=='ContentMultiple'){?>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h3>Send Message</h3>
+                </div>
+		<div id="result"></div>
+                <div class="panel-body" >
+                  <form action="#" style="border-radius: 0px;" id="userForm" name="userForm" action="" method="POST" class="form-horizontal group-border-dashed">
+                    <div class="form-group">
+                      <label class="col-sm-3 control-label">Select Co-ordinators</label>
+                      <div class="col-sm-6">
+                          <?php  $usertypeList = $db -> select("SELECT * FROM `tbl_userType` WHERE 1"); ?>
+                        <select name="membercord" id="membercord" class="form-control">
+                           
+                             <option>Select usertype</option>
+			<?php for($i=0;$i<count($usertypeList);$i++){ ?>
+ 				<option value="<?php echo $usertypeList[$i]['usertypeId']; ?>"><?php echo $usertypeList[$i]['userType']; ?></option>
+			<?php } ?>
+                           
+                           
+                        </select>
+                      </div>
+                       <div class="col-sm-3">
+                        <button type="button" class="btn btn-space btn-primary" name="submit" value="user" id="submit" onclick="submitMember()">Select</button>
+                        </div>
+                    </div>                 
+                <div id="memberdivId"></div>
+                <div class="form-group row">
+                <label class="col-sm-2 control-label">Message Content</label>
+                  <div class="col-sm-1"></div>
+                <div class="col-sm-6">
+          		<textarea id="Content" name="Content" class="form-control" ></textarea>
+          		</div>
+  		</div>
+			<div class="form-group">
+                      <label class="col-sm-3 control-label"></label>
+                    
+                      <div class="col-sm-6">
+                        <button type="button" class="btn btn-space btn-primary" name="submit" value="user" id="submit" onclick="submitMember()">Submit</button>
+                        <button class="btn btn-space btn-default">Cancel</button>
+
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <script>
+  $(document).ready(function(){
+      	     	$('#membercord').select2();
+      		});
+         </script>
         </div>
 
 <?php } elseif($type=='Content'){?>
@@ -180,7 +252,6 @@ $(document).ready(function(){
 
 
 function submitForm(){
-
   $.ajax({
         type:"GET",
         url:'action.php',
@@ -205,6 +276,15 @@ function getMembers(districtId){
 	var type="getMembers";
 	$.get('action.php',{type:type,districtId:districtId},function(data){
 		$('#memberdiv').html(data);
+      	App.emailCompose();
+	});	
+	
+	}
+	function submitMember(){
+	var type="getmemberId";
+	    var memberId = document.getElementById('membercord').value
+	$.get('action.php',{type:type,memberId:memberId},function(data){
+		$('#memberdivId').html(data);
       	App.emailCompose();
 	});	
 	
